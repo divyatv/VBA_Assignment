@@ -1,5 +1,5 @@
 ' Homework easy - get the ticket symbol and total stock volume for all the etf
-' Sample code structure - Psuedocode
+' Sample code structure or logic
 'go over all the sheets
 'go over all the rows in each sheets using last row
 'set a ticker symbol - to begin with the first row
@@ -12,16 +12,24 @@
 Sub sumtotal()
 
 'Initialize a variable to get the count of active worksheets
-Dim ws_count As Integer
+'Dim ws_count As Integer
 
 'initialize a counter to go over all the worksheets.
-Dim ws As Integer
+'Dim ws As Integer
 
 ' Get the count of all the worksheets in the excel file.
-ws_count = ActiveWorkbook.Worksheets.Count
+'ws_count = ActiveWorkbook.Worksheets.Count
+'MsgBox ("active sheet in this file=" & ws_count)
+
+Dim wk As Worksheet
+
+'Loop through each work sheet
+For Each wk In ThisWorkbook.Worksheets
+wk.Activate
+          
 
 'loop through all the work sheets and do the same calculations.
-For ws = 1 To ws_count
+'For ws = 1 To ws_count -- this does it three times in the same sheet.
 
     ' Initialise a variable for  totalvolume
     Dim totals As Double
@@ -72,7 +80,11 @@ For ws = 1 To ws_count
                         
                           Next i
 
-    Next ws
+    'Next ws
+     ' Insert your code here.
+            ' This line displays the worksheet name in a message box.
+            MsgBox wk.Name
+  Next wk
 
 End Sub
 
